@@ -1,0 +1,1 @@
+# Mateus, 10 de setembro de 2018from flask import Flask, render_templateapp = Flask(__name__)# Rotas =================@app.route("/<soma>/<num1>/<num2>")def soma(soma, num1, num2):	return render_template("index.html", soma=(int(num1)) + (int(num2)))if __name__ == '__main__':	app.run(debug=True)
