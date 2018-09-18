@@ -1,0 +1,16 @@
+>>>print ('Olá Mundo')
+ print = Função
+ Olá Mundo = String
+
+>>>a = 'abacate'
+ a = Variável
+ Obs: Variáveis em python são todas objetos
+
+>>>dir('abacate')
+ Obs: A função "dir" irá mostrar tudo o que se pode fazer com o objeto "abacate".
+
+>>>help('abacate'.upper)
+ Obs: "help dirá oque "upper irá retonar. Da mesma forma podemos usar...
+>>>help(print)
+
+  Próxima aula = Operadores Relacionais e Lógicos.

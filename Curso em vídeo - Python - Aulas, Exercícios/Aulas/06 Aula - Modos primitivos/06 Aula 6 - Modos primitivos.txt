@@ -1,0 +1,21 @@
+Curso de Python - Aula 06 - Modos primitivos
+=========Tipos Primitivos=========
+int = Valores verdadeiros (inteiros
+float = valores decimais
+bool = True or False (sempre que usar o True, use com 'T' maiúsculo, o mesmo para o False)
+str = Entre áspas(mesagens) - Exempo: 'Olá' ou/e '7.5'.
+
+
+===Sístaxe do print no Python 3:
+
+n1 = input('Escreva um número ')
+n2 = input('Escreva mais um número ')
+s = n1 + n2
+print('A soma vale {}'.format(s))
+
+
+=============Desafios============
+03 - Crie um programa que leia dois números e mostre a SOMA entre eles.
+04 - Faça um programa que leia algo pelo teclado e mostre na tela o seu tipo
+primitivo e todas as informações possíveis sobre ele (se ele pode ser um número, uma letra...)
+

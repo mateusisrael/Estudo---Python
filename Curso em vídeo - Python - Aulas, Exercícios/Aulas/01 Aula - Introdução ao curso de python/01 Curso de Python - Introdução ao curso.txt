@@ -1,0 +1,32 @@
+Programação em Python: Curso em Vídeo. 1: 
+https://youtu.be/S9uPNppGsGo
+- Daqui à dez anos vamos precisar de cerca de 1.4 milhões de programadores.
+- Não é só os pc´s que precisam de programadores:
+  Relógios, tv´s, video games, robos, pcs, óculos inteligentes.
+- A nescecidade do brasil de ter programadores será maior. 
+- A programação vai te ajudar a resolver problemas.
+- Quem aprende a programar se torna mais criativo.
+
+Pré-Riquisitos:
+- Não precisa saber Inglês.
+- Não precisa ser um gênio da matemática.
+- Não existe idade para começar.
+- Tudo é vantagem e nada é disperdiçado
+
+Maiores obstáculos:
+- Falta de Compromisso.
+- Ter pressa. (Não copie, aprenda).
+- Faça exercícios. A fórmula do fracasso é não praticar.
+- Achar que já sabe tudo.
+- Comece nas coisas simples.
+- Não pule etapas.
+
+Áreas:
+- Desktop
+- Web
+- Mobile
+- IOT (Internet das coisas pequenas)
+- Games
+  Nada te impede de trabalhar em todas essas áreas.
+
+Quando você e seu pc tentam se comunicar, há um grande desentendimento se você não souber programar.

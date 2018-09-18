@@ -1,0 +1,35 @@
+Aula 08 - Utilizando Módulos
+
+No python você pode adicionar 'coisas' bibliotecas para adicionar coisas á mais com o comando 
+========import
+
+import_bebida
+from doce import pudim,banana
+
+python.org: para importar novos modulos. Ir em pypi.
+#para ver todas as bibliotecas escreva import e aperte ctrl + espaço.
+Para baixar bibliotecas direto do pycharm, digite import a biblioteca que voce quer baixar.
+Clique na lampadazinha que aparecer perto do mouse e clique em import.
+
+Para ver os módulos(extras) instalados no pycharm:
+Ferramentas>>preferencias>>project>>projectinterpreter>>emoji
+
+Exercícios:
+016 - Crie um programa que leia um número real qualquer pelo teclado e mostre na tela a sua
+porção inteira 
+EX: Digite um número: 6.127
+O número 6.127 tem a parte inteira 6.
+
+017 - Faça um programa que leia o comprimento do cateto oposto e do cateto adjacente de um 
+triângulo retângulo, calcule e mostre o comprimento da hipotenusa.
+
+018 - Faça um programa que leia um programa qualquer e mostre na tela o valor do ceno, cosseno e
+tangente desse ângulo.
+
+019 - Um professor quer sortear um dos seus quatro alunos para apagar o quadro. Faça um programa
+que ajude ele, lendo o nome deles e escrevendo o nome escolhido.
+
+020 - O mesmo professor do desafio anterior quer sortear a ordem de apresentação de trabalhos
+dos alunos. Faça um programa que leia o nome dos quatro alunos e mostre a ordem sorteada. 
+
+021 - Faça um programa em python que abra e reproduza o áudio de um arquivo MP3.

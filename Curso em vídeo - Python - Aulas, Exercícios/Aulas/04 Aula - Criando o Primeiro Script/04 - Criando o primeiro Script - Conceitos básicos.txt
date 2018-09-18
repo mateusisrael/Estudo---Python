@@ -1,0 +1,41 @@
+Aula de python 4: https://youtu.be/31llNGKWDdo
+
+Teoria:
+
+Delimitador de mensagem é usado para escrever uma mensagem na tela
+para isso você deve usar aspas entre a mensagem e abrir parentese e fechar
+Exemplo: ('olá mundo!')
+instrução para para escrever 'Print'
+Exemplo: print ('olá mundo')
+- Print é um COMANDO que significa ESCREVA.
+- 'Olá mundo' é uma mensgem, se você quiser escreve-la na tela, coloque aspas, se não quiser
+escrever na tela, não coloque aspas.
+
+- OBS: Números são usados para fazer cálculos.
+- Aspas é usado para escrever mesagens na tela.
+
+Dica: Oque não for uma mensgem, não estiver em aspas, ecreva sempre com letra minusculas
+(comandos).
+
+- Toda variável é um objeto.
+- Um objeto é um pouco mais que uma variável.
+- toda variável pode receber valóres, que é o simbolo de 'igual' (=)
+
+nome=Mateus
+idade=18
+peso=59
+print(nome, idade, peso) 
+
+INPUT é um comando que signigica LEIA
+
+Modo Interativo do IDLE = F5
+O modo interativo serve para testar um script.
+
+Primeiro desafio. Chefão da primeira fase.
+1 - Criar um scriptPython que leia o nome de uma pessoa e mostre uma mensagem de boas-vindas
+de acordo com o valor digitado.
+
+2 Crie um script Python que leia o dia, o mês e o ano de nascimento de uma pessoa e mostre
+com a data formatada.
+
+3 Crie um script Python que leia dois números e tente mostrar a soma entre eles.

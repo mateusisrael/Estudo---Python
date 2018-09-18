@@ -1,0 +1,31 @@
+Aula de Programação. 2 - https://youtu.be/Mp0vhMDI7fA
+- De onde vem a linguagem de programação 'Python'? Pra que ela serve?
+Criada por Von Houson no ano de 1989, a Python surgiu para ser uma linguagem simples
+- Grandes Sistemas Operacionais, como o Mac OS e Linux, ultilizam a linguagem Python
+
+Principais características do Python:
+- É uma linguagem de propósito geral
+- Fácil e intuitiva
+- Multiplataforma (Um programa que você escreve em um sistema e roda em todos)
+- Vem com a maioria das coisas que precisaremos em nosso dia-a-dia
+- Código aberto
+- É uma linguagem organizada
+- Orientada a objetos
+- Muitas bibliotecas
+
+Principais áreas:
+- Inteligência artificial
+- Biotecnologia
+- Computação 3D
+
+Quem usa Python?
+- Google
+- BitTorrent
+- Globo Play
+- Nasa
+
+Jogos que ultilizam Python:
+- Frets Fire
+- Civilization 4
+- Battlefield 2
+e muitos outros.

@@ -1,0 +1,50 @@
+	29 de janeiro de 2018
+
+Alguns módulos importantes da biblioteca math:
+ ceil
+ floor
+ trunc
+ pow
+ sqrt
+ factorial
+
+Instalando novos bibliotecas:
+ import emoji(nome da biblioteca a se importar)
+Irá aparecer uma lampada vermelha perto de emoji.
+Clique na lampada, e install package emoji.
+Para ver os módulos externos que estão instalados:
+ferramentas>preferencias>project pythonteste>project interprete
+no site do python: Pypi > browser packages
+
+Código de exemplo de como usar um módulo:
+ 
+import math
+num = int(input('Digite um número')
+raiz = math.sqrt(num)
+print('A raiz de {} é igual a {}'.format(num, raiz))
+
+.......	ou/e
+
+import math
+num = int(input('Digite um número'))
+raiz = math.sqrt(num)
+print('A raiz de {} é igual a {}'.format(num, math.ceil(raiz)))
+
+....... ou/e
+
+from math import sqrt, floor
+num = int(input('Digite um número')
+raiz = sqrt(num)
+print('A raiz de {} é igual a {}'.format(num, floor(raiz)))
+
+
+.......
+
+import random
+print(random.random())
+
+import random
+print(random.randint(1,10))
+
+import emoji
+print(emoji.emojize('Olá mundo :earth americas:', use aliases=True))

@@ -1,0 +1,10 @@
+Curso de Python 3: https://youtu.be/VuKvR1J2LQE?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6
+
+- A linguagem de programação são "interpretes" para traduzir a sua linguagem para o pc. 
+
+Nesta aula aprendi a instalar o python e um interpretador.
+Download do python no site oficial:
+www.python.org
+
+- Instalação no ubuntu:
+  Sudo apt get install python 3.6

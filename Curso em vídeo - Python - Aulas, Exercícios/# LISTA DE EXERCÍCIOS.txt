@@ -1,0 +1,225 @@
+AULA 8
+
+desafio 16
+ Crie um programa que leia um número real qualquer pelo teclado e mostre
+ na tela a sua porção inteira
+Exemplo:
+ Digite um número: 6.127
+ O número 6.127 tem a parte inteira 6.
+
+
+desafio 017
+ Faça um programa que leia o comprimento do cateto oposto e do cateto adjacente 
+ de um triângulo retângulo, calculee mostre o comprimento da hipotenusa.
+
+
+desafio 18
+ Faça um programa que leia um ângulo qualquer e mostre na tela o valor do seno,
+ cosseno e tangente desse ângulo.
+
+
+desafio 19
+Um professor quer sortear um dos seus quatro alunos para apagar o quadro.
+Faça um programa que ajude ele, lendo o nome deles e escrevendo o nome do 
+escolhido.
+
+
+desafio 20
+O mesmo professor do desafio anterior quer sortear a ordem de apresentação
+de trabalhos dos alunos. Faça um programa que leia o nome dos quatro alunos
+e mostre a ordem sorteada.
+
+
+desafio 21
+ Faça um programa em python que abra e reproduza um arquivo mp3.
+
+AULA 09
+- Crie um programa que leia o nome completo de uma pessoa e mostre:
+	O nome com todas as letras maiúsculas
+	O nome com todas as letras minúsculas
+	Quantas letras ao todo (sem considerar espaços)
+	Quantas letras tem o primeiro nome
+
+AULA 10
+
+Exercício 28
+Escreva um programa que faça o computador "pensar" em um número inteiro entre 
+0 e 5 e peça para o usuário tentar descobrir qual foi o número escolhido pelo computador.
+O programa deverá escrever na tela se o usuário venceu ou perdeu.
+
+Exercício 29
+Escreva um programa que leia a velocidade de um carro.
+Se ele ultrapassar 80km/h, mostre uma mensagem dizendo que ele foi multado.
+A multa vai custar R$7,00 por cada Km acima do limite.
+
+Exercício 30
+Crie um programa que leia um número inteiro e mostre na tela se ele é
+par ou impar.
+
+Exrcício 31
+Desenvolva um programa que pergunte a distância de uma viagem em km,
+Calcule o preço da passagem, cobrando R$0,50 por km para viagens até 200km e 
+R$0,45 para viagens mais longas.
+
+Exercício 32
+Crie um programa que leia um ano qualquer e mostre se ele é Bisexto.
+
+Exercício 33
+Faça um programa que leia 3 números e mostre qual é o maior e qual é o menor
+
+Exercírio 34
+Escreva um programa que pergunte o salário de um funcionário e calcule o valor do
+seu aumento.
+Para salários superiores a R$1.250,00, calcule um aumento de 10%
+Para os inferiores ou iguais, o aumento é de 15%.
+
+Exercício 35
+Desenvolva um programa que leia o comprimento de três retas e diga ao usuário
+se elas podem ou não formar um triângulo.
+
+
+  Aula 12:
+
+Exercício 36
+Escreva um programa para aprovar o empréstimo bancário para a compra de uma casa.
+O programa vai perguntar o valor da casa, o salário do comprador e em quantas
+vezes ele vai pagar.
+Calcule o valor da prestação mensal, sabendo que ela não pode exceder 30% do 
+salário ou então o empréstimo será negado.
+
+
+Exercício 37 (pode ser pulado caso haja dificuldade)
+Escreva um programa que leia um número inteiro qualquer e peça para o usuário 
+escolher qual será a base de conversão:
+- 1 para binário
+- 2 octal
+- 3 para hexadecimal
+
+
+Exercício 38
+Escreva um programa que leia dois números inteiros e compare-os, mostrando
+na tela um mensagem:
+- O primeiro valor é maior
+- O segundo valor é maior
+- Não existe valor maior, os dois são iguais
+
+
+Exercício 39
+Faça um programa que leia o ano de nascimento de um jovem e informe, de 
+acordo com sua idade:
+- Se ele ainda vai se alistar ao serviço militar.
+- Se é hora de se alistar.
+- Se já passou do temdo do alistamento.
+
+Seu programa também deverá mostrar o tempo que falta ou que passou do prazo.
+
+
+Exercício 40
+Crie um programa que leia duas notas de um aluno e calcule a sua média,
+mostrando uma mensagem no final de acordo com a média atiginda:
+- Média abaixo de 5.0: Reprovado
+- Média entre 5.0 e 6.9: Recuperação
+- Média 7.0 ou superior: Aprovado
+
+
+Exercício 41
+A confederação nacional de natação precisa de um programa que leia o ano de 
+nascimento de um atleta e mostre sua categoria, de acordo com a idade:
+- até 9 anos: Mirim
+- até 14 anos: Infantil
+- até 19 anos: Junior
+- até 20 anos: Sênior
+- Acima: Master
+
+
+Exercício 42
+Refaça o desafio 35 dos triângulos, acrescentando o recurso de mostrar que 
+tipo de triângulo será formado:
+- Equilátero: Todos os lados iguais
+- Isósceles: Dois lados iguais
+- Escaleno: Todos o lados diferentes
+
+
+Exercício 43
+Desenvolva uma lógica que leia o peso e a altura de uma pessoa, calcule seu IMC
+e mostre seu status, de acordo com a tabela abaixo:
+- Abaixo de 18.5: abaixo do peso
+- Entre 18.5 e 25: peso ideal
+- 25 até 30: sobrepeso
+- 30 até 40: Obesidade mórbida
+
+
+Exercício 44
+Elabore um programa que calcule o valor a ser pago por um produto, considerando
+o seu preço normal e condição de pagamento:
+- à vista dinheiro/cheque:  10 por cento de desconto
+- à vista no cartão: 5% de desconto
+- em até 2x no cartão: preço normal
+- 3x ou mais no cartão: 20% de juros
+
+
+Exercício 45
+Crie um programa que faça o computador jogar jokenpô (pedra,papel,tesoura) com você.
+
+
+--------- AULA 13: ---------------------------------
+
+
+Exercício 46
+Faça um programa que mostre na tela uma contagem regressiva para o estouro de 
+fogos de artifício. Indo de 10 até 0, com uma pausa de 1 segundo entre eles.
+FEITO
+
+
+Exercício 47
+Crie um programa que mostre na tela todos os números pares que estão no intervalo
+entre 1 e 50
+FEITO
+
+Exercício 48
+Faça um programa que calcule a soma entre todos os números impares que são múltiplos
+de três e que se encontram no intervalo de 1 até 500.
+FEITO
+
+Exercício 49
+Refaça o exercicio 9, mostrando a tabuada de um número que o usuário escolher,
+só que agora utilizando um laço 'for'.
+FEITO
+
+
+Exercício 50
+Desenvolva um programa que leia seis números inteiros e mostre a soma apenas 
+daqueles que forem pares. Se o valor digitado for ímpar, desconsidereo.
+Iniciado mas PULADO
+
+Exercício 51
+Desenvolva um programa que leia o primeiro termo e a razão de uma PA (progressão
+aritmética). no final, mostre os 10 primeiros termos dessa progressão.
+
+
+Exercício 52
+Faça um programa que leia um número inteiro e diga se ele é ou não um número
+primo.
+
+
+Exercício 53
+Crie um programa que leia uma frase qualquer e diga se ela é um palíndromo.
+desconsiderando os espaços.
+
+
+Exercício 54
+Crie um programa que leia o ano de nascimento de 7 pessoas. no final, mostre 
+quantas pessoas ainda não atingiram a maioridade e quantas já são maiores.
+
+
+Exercício 55
+Faça um programa que leia o peso de cinco pessoas. No final, mostre qual 
+foi o maior e o menor peso lidos.
+
+
+Exercício 56
+Desenvolva um programa que leia o nome, idade e sexo de 4 pessoas. No final do
+programa  mostre:
+ - A média de idade do grupo.
+ - Qual é o nome do homem mais velho.
+ - Quantas mulherse têm menos de 20 anos.

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html class="no-js mh-one-sb" lang="pt-BR" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<title>Leitura e gravação em arquivos com Python - Lendo arquivos de texto - Bóson Treinamentos em Tecnologia</title>
+<link rel="shortcut icon" href="http://www.bosontreinamentos.com.br/wp-content/uploads/2016/01/favicon-32x32.png">
+<!--[if lt IE 9]>
+<script src="http://www.bosontreinamentos.com.br/wp-content/themes/mh_magazine/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="pingback" href="http://www.bosontreinamentos.com.br/xmlrpc.php"/>
+
+<!-- This site is optimized with the Yoast SEO plugin v7.4.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Nesta lição vamos mostrar como ler texto de arquivos com Python. Na lição seguinte, mostraremos como escrever em um arquivo de texto com Python"/>
+<link rel="canonical" href="http://www.bosontreinamentos.com.br/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Leitura e gravação em arquivos com Python - Lendo arquivos de texto - Bóson Treinamentos em Tecnologia" />
+<meta property="og:description" content="Nesta lição vamos mostrar como ler texto de arquivos com Python. Na lição seguinte, mostraremos como escrever em um arquivo de texto com Python" />
+<meta property="og:url" content="http://www.bosontreinamentos.com.br/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/" />
+<meta property="og:site_name" content="Bóson Treinamentos em Tecnologia" />
+<meta property="article:publisher" content="https://www.facebook.com/bosontreinamentos" />
+<meta property="article:tag" content="Programação" />
+<meta property="article:tag" content="Python" />
+<meta property="article:section" content="Programação em Python" />
+<meta property="article:published_time" content="2017-06-17T14:27:06+00:00" />
+<meta property="article:modified_time" content="2017-06-17T15:15:06+00:00" />
+<meta property="og:updated_time" content="2017-06-17T15:15:06+00:00" />
+<meta property="og:image" content="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/06/programação-python-ler-arquivos-texto.jpg" />
+<meta property="og:image:width" content="662" />
+<meta property="og:image:height" content="497" />
+<meta property="og:image:alt" content="Programação em Python - como ler arquivos de texto em python" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Nesta lição vamos mostrar como ler texto de arquivos com Python. Na lição seguinte, mostraremos como escrever em um arquivo de texto com Python" />
+<meta name="twitter:title" content="Leitura e gravação em arquivos com Python - Lendo arquivos de texto - Bóson Treinamentos em Tecnologia" />
+<meta name="twitter:site" content="@bosontreina" />
+<meta name="twitter:image" content="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/06/programação-python-ler-arquivos-texto.jpg" />
+<meta name="twitter:creator" content="@bosontreina" />
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Person","url":"http:\/\/www.bosontreinamentos.com.br\/","sameAs":["https:\/\/www.facebook.com\/bosontreinamentos","https:\/\/www.instagram.com\/bosontreinamentos\/","https:\/\/www.youtube.com\/user\/bosontreinamentos","https:\/\/www.pinterest.com\/bosontreina\/","https:\/\/twitter.com\/bosontreina"],"@id":"#person","name":"F\u00e1bio dos Reis"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Bóson Treinamentos em Tecnologia &raquo;" href="http://www.bosontreinamentos.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Bóson Treinamentos em Tecnologia &raquo;" href="http://www.bosontreinamentos.com.br/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Bóson Treinamentos em Tecnologia &raquo; Leitura e gravação em arquivos com Python &#8211; Lendo arquivos de texto" href="http://www.bosontreinamentos.com.br/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.bosontreinamentos.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.5"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sharebar-css'  href='http://www.bosontreinamentos.com.br/wp-content/plugins/sharebar/css/sharebar.css?ver=4.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpProQuiz_front_style-css'  href='http://www.bosontreinamentos.com.br/wp-content/plugins/wp-pro-quiz/css/wpProQuiz_front.min.css?ver=0.37' type='text/css' media='all' />
+<link rel='stylesheet' id='mailchimp-for-wp-checkbox-css'  href='http://www.bosontreinamentos.com.br/wp-content/plugins/mailchimp-for-wp/assets/css/checkbox.min.css?ver=2.3.17' type='text/css' media='all' />
+<link rel='stylesheet' id='mh-style-css'  href='http://www.bosontreinamentos.com.br/wp-content/themes/mh_magazine/style.css?ver=2.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='mh-google-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='mailchimp-for-wp-form-css'  href='http://www.bosontreinamentos.com.br/wp-content/plugins/mailchimp-for-wp/assets/css/form.min.css?ver=2.3.17' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var photocrati_ajax = {"url":"http:\/\/www.bosontreinamentos.com.br\/?photocrati_ajax=1","wp_home_url":"http:\/\/www.bosontreinamentos.com.br","wp_site_url":"http:\/\/www.bosontreinamentos.com.br","wp_root_url":"http:\/\/www.bosontreinamentos.com.br","wp_plugins_url":"http:\/\/www.bosontreinamentos.com.br\/wp-content\/plugins","wp_content_url":"http:\/\/www.bosontreinamentos.com.br\/wp-content","wp_includes_url":"http:\/\/www.bosontreinamentos.com.br\/wp-includes\/","ngg_param_slug":"nggallery"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ajax/static/ajax.min.js?ver=4.9.5'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/plugins/sharebar/js/sharebar.js?ver=4.9.5'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/themes/mh_magazine/js/scripts.js?ver=4.9.5'></script>
+<link rel='https://api.w.org/' href='http://www.bosontreinamentos.com.br/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.bosontreinamentos.com.br/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.bosontreinamentos.com.br/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.5" />
+<link rel='shortlink' href='http://www.bosontreinamentos.com.br/?p=9741' />
+<link rel="alternate" type="application/json+oembed" href="http://www.bosontreinamentos.com.br/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.bosontreinamentos.com.br%2Fprogramacao-em-python%2Fleitura-e-gravacao-em-arquivos-com-python%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.bosontreinamentos.com.br/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.bosontreinamentos.com.br%2Fprogramacao-em-python%2Fleitura-e-gravacao-em-arquivos-com-python%2F&#038;format=xml" />
+<!-- <meta name="NextGEN" version="2.1.26" /> -->
+
+<script type="text/javascript">jQuery(document).ready(function($) { $('.sharebar').sharebar({horizontal:'true',swidth:'85',minwidth:1000,position:'left',leftOffset:30,rightOffset:10}); });</script>
+<!-- Sharebar Plugin by Monjurul Dolon (http://mdolon.com/) - more info at: http://devgrow.com/sharebar-wordpress-plugin -->
+</head>
+<body class="post-template-default single single-post postid-9741 single-format-standard wt-layout1 pt-layout1 ab-layout1 rp-layout1 loop-layout1">
+<aside class="header-widget">
+	<div class="widget_text sb-widget"><div class="textwidget custom-html-widget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Rodapé -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-9235817663884647"
+     data-ad-slot="2271734818"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div></aside>
+<div class="mh-container">
+<header class="header-wrap">
+		<nav class="header-nav clearfix">
+		<div class="menu-menu-superior-container"><ul id="menu-menu-superior" class="menu"><li id="menu-item-3066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3066"><a href="http://www.bosontreinamentos.com.br/sobre/">Sobre a Bóson Treinamentos</a></li>
+<li id="menu-item-5650" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5650"><a href="http://www.bosontreinamentos.com.br/contribuir/">Contribua com a Bóson</a></li>
+<li id="menu-item-8075" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8075"><a title="Escreva artigos para a Bóson!" href="http://www.bosontreinamentos.com.br/escrever/">Escreva artigos para a Bóson!</a></li>
+<li id="menu-item-10911" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10911"><a href="http://www.bosontreinamentos.com.br/obrigado-pela-contribuicao/">Lista de Contribuidores da Bóson</a></li>
+</ul></div>	</nav>
+		<a href="http://www.bosontreinamentos.com.br/" title="Bóson Treinamentos em Tecnologia" rel="home">
+<div class="logo-wrap" role="banner">
+<style type="text/css" id="mh-header-css">.logo-name, .logo-desc { color: #2536ba; }.logo-name { border-bottom: 3px solid #2536ba; }</style>
+<div class="logo logo-text">
+<h1 class="logo-name">Bóson Treinamentos em Tecnologia</h1>
+<h2 class="logo-desc">Cursos e tutoriais de Windows Server, Linux, SQL, Excel, Lógica de Programação, Hardware, Eletrônica, Arduino e muito mais!</h2>
+</div>
+</div>
+</a>
+	<nav class="main-nav clearfix">
+		<div class="menu-links-container"><ul id="menu-links" class="menu"><li id="menu-item-3262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-3262"><a title="Página Inicial da Bóson Treinamentos" href="http://www.bosontreinamentos.com.br/">Início</a></li>
+<li id="menu-item-769" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-769"><a title="APLICATIVOS E BANCOS DE DADOS" href="http://www.bosontreinamentos.com.br/">APLICATIVOS E BANCOS DE DADOS</a>
+<ul class="sub-menu">
+	<li id="menu-item-2852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2852"><a title="Curso completo de MySQL" href="http://www.bosontreinamentos.com.br/curso-completo-de-mysql/">CURSO COMPLETO DE MySQL</a></li>
+	<li id="menu-item-7261" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7261"><a title="Microsoft SQL Server" href="http://www.bosontreinamentos.com.br/curso-de-microsoft-sql-server/">Curso de Microsoft SQL Server</a></li>
+	<li id="menu-item-11866" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11866"><a href="http://www.bosontreinamentos.com.br/category/bancos-de-dados/">Teoria de Bancos de Dados</a></li>
+	<li id="menu-item-6472" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6472"><a href="http://www.bosontreinamentos.com.br/teste-quiz-sql/">Quiz de SQL básico</a></li>
+	<li id="menu-item-2171" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2171"><a title="PostgreSQL" href="http://www.bosontreinamentos.com.br/category/postgresql-banco-dados/">PostgreSQL</a></li>
+	<li id="menu-item-2571" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2571"><a title="Microsoft Excel" href="http://www.bosontreinamentos.com.br/category/microsoft-excel-2010/">MICROSOFT EXCEL</a></li>
+	<li id="menu-item-8254" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8254"><a title="Curso de Planilhas Google" href="http://www.bosontreinamentos.com.br/curso-de-planilhas-google-boson-treinamentos/">Curso de Planilhas Google</a></li>
+</ul>
+</li>
+<li id="menu-item-777" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-777"><a title="REDES / HARDWARE" href="http://www.bosontreinamentos.com.br/">REDES / HARDWARE</a>
+<ul class="sub-menu">
+	<li id="menu-item-778" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-778"><a title="Redes / Network" href="http://www.bosontreinamentos.com.br/category/redes-computadores/">Redes de Computadores</a></li>
+	<li id="menu-item-6848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6848"><a href="http://www.bosontreinamentos.com.br/quiz-basico-de-protocolo-tcpip/">Quiz Básico de Protocolo TCP/IP</a></li>
+	<li id="menu-item-7237" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7237"><a href="http://www.bosontreinamentos.com.br/category/seguranca/">Segurança</a></li>
+	<li id="menu-item-781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-781"><a title="Virtualização e Cloud Computing" href="http://www.bosontreinamentos.com.br/category/virtualizacao/">Virtualização e Cloud Computing</a></li>
+	<li id="menu-item-7516" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7516"><a title="Redes sem Fio" href="http://www.bosontreinamentos.com.br/category/redes-wireless/">Redes Wireless</a></li>
+	<li id="menu-item-3318" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3318"><a href="http://www.bosontreinamentos.com.br/category/windows-server-2012/">Windows Server 2012</a></li>
+	<li id="menu-item-839" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-839"><a title="Windows Server 2008 R2" href="http://www.bosontreinamentos.com.br/category/windows-server-2008-r2/">Windows Server 2008 R2</a></li>
+	<li id="menu-item-8638" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-8638"><a href="http://www.bosontreinamentos.com.br/category/cisco/">Cisco</a>
+	<ul class="sub-menu">
+		<li id="menu-item-8644" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8644"><a href="http://www.bosontreinamentos.com.br/category/cisco/ccna/">CCNA</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1730" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1730"><a title="Windows Powershell" href="http://www.bosontreinamentos.com.br/category/windows-powershell/">Windows Powershell</a></li>
+	<li id="menu-item-780" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-780"><a title="Ferramentas e Utilitarios" href="http://www.bosontreinamentos.com.br/category/ferramentas-e-utilitarios/">Ferramentas e Utilitários</a></li>
+	<li id="menu-item-779" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-779"><a href="http://www.bosontreinamentos.com.br/category/hardware/">Hardware</a></li>
+</ul>
+</li>
+<li id="menu-item-775" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-775"><a title="LINUX / UNIX" href="http://www.bosontreinamentos.com.br/">LINUX / UNIX</a>
+<ul class="sub-menu">
+	<li id="menu-item-5380" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5380"><a href="http://www.bosontreinamentos.com.br/category/android/">Android</a></li>
+	<li id="menu-item-4047" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4047"><a title="Curso Básico de Linux e Certificação LPI 1" href="http://www.bosontreinamentos.com.br/curso-de-linux-basico-e-certificacao-lpi-1/">Curso de Linux Básico e Certificação LPI 1</a></li>
+	<li id="menu-item-4043" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4043"><a title="Curso de Programação em Shell Scripting no Linux" href="http://www.bosontreinamentos.com.br/curso-de-shell-scripting/">Curso de Shell Scripting</a></li>
+	<li id="menu-item-4062" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4062"><a href="http://www.bosontreinamentos.com.br/distribuicoes-linux-instalacao-e-analise/">Distribuições Linux – Instalação e Análise</a></li>
+	<li id="menu-item-771" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-771"><a title="Ubuntu Linux" href="http://www.bosontreinamentos.com.br/category/linux-ubuntu/">Ubuntu Linux</a></li>
+	<li id="menu-item-7019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7019"><a href="http://www.bosontreinamentos.com.br/sistemas-bsd-e-derivados-instalacao-e-analise/">Sistemas UNIX e derivados – Instalação e Análise</a></li>
+	<li id="menu-item-2096" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2096"><a title="Mac OS X e iOS" href="http://www.bosontreinamentos.com.br/category/mac-os-x/">Mac OS X e iOS</a></li>
+</ul>
+</li>
+<li id="menu-item-776" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-776"><a title="PROGRAMAÇÃO" href="http://www.bosontreinamentos.com.br/">PROGRAMAÇÃO</a>
+<ul class="sub-menu">
+	<li id="menu-item-5088" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5088"><a href="http://www.bosontreinamentos.com.br/category/analise-de-sistemas/">Análise de Sistemas</a></li>
+	<li id="menu-item-9078" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9078"><a href="http://www.bosontreinamentos.com.br/category/estruturas-de-dados/">Estruturas de Dados</a></li>
+	<li id="menu-item-772" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-772"><a title="Logica de Programação" href="http://www.bosontreinamentos.com.br/category/logica-de-programacao/">Lógica de Programação</a></li>
+	<li id="menu-item-8269" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8269"><a href="http://www.bosontreinamentos.com.br/category/html/">HTML</a></li>
+	<li id="menu-item-7951" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7951"><a title="Programação em JavaScript" href="http://www.bosontreinamentos.com.br/category/programacao-em-javascript/">JavaScript</a></li>
+	<li id="menu-item-1390" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1390"><a title="Programação em C#" href="http://www.bosontreinamentos.com.br/category/csharp/">Programação em C#</a></li>
+	<li id="menu-item-9209" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9209"><a href="http://www.bosontreinamentos.com.br/category/programacao-em-linguagem-c/">Programação em Linguagem C</a></li>
+	<li id="menu-item-9536" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9536"><a title="Curso básico de Programação Web com PHP e MySQL" href="http://www.bosontreinamentos.com.br/curso-basico-de-programacao-web-com-php/">Programação Web com PHP e MySQL</a></li>
+	<li id="menu-item-773" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-773"><a title="Python" href="http://www.bosontreinamentos.com.br/category/programacao-em-python/">Python</a></li>
+	<li id="menu-item-774" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-774"><a title="Visual Basic" href="http://www.bosontreinamentos.com.br/category/programacao-em-visual-basic-net/">VB.Net</a></li>
+</ul>
+</li>
+<li id="menu-item-2067" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2067"><a title="ELETRÔNICA" href="http://www.bosontreinamentos.com.br/category/eletronica/">ELETRÔNICA</a>
+<ul class="sub-menu">
+	<li id="menu-item-2068" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2068"><a title="Arduino" href="http://www.bosontreinamentos.com.br/category/eletronica/arduino/">Arduino</a></li>
+	<li id="menu-item-3924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3924"><a title="Curso de Eletrõnica" href="http://www.bosontreinamentos.com.br/category/eletronica/curso-de-eletronica/">Curso de Eletrônica</a></li>
+	<li id="menu-item-6491" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6491"><a href="http://www.bosontreinamentos.com.br/category/eletronica/eletronica-digital/">Eletrônica Digital</a></li>
+	<li id="menu-item-2069" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2069"><a title="Eletronica Geral" href="http://www.bosontreinamentos.com.br/category/eletronica/eletronica-geral/">Eletrônica Geral</a></li>
+</ul>
+</li>
+<li id="menu-item-3844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3844"><a title="Parceiros da Bóson Treinamentos" href="http://www.bosontreinamentos.com.br/parceiros/">Parceiros</a></li>
+</ul></div>	</nav>
+	</header>
+<div class="mh-wrapper clearfix">
+	<div class="mh-main">
+		<div class="mh-content left"><nav class="breadcrumb"><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.bosontreinamentos.com.br" itemprop="url"><span itemprop="title">Início</span></a></span> <span class="bc-delimiter">&raquo;</span> <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.bosontreinamentos.com.br/category/programacao-em-python/" itemprop="url"><span itemprop="title">Programação em Python</span></a></span> <span class="bc-delimiter">&raquo;</span> Leitura e gravação em arquivos com Python &#8211; Lendo arquivos de texto</nav>
+<article class="post-9741 post type-post status-publish format-standard has-post-thumbnail hentry category-programacao-em-python tag-programacao tag-python">
+	<header class="post-header">
+		<h1 class="entry-title">Leitura e gravação em arquivos com Python &#8211; Lendo arquivos de texto</h1>
+		<p class="meta post-meta">Postado Em <span class="updated">17/06/2017</span>  [data do post] por <span class="vcard author"><a class="fn" href="http://www.bosontreinamentos.com.br/author/admin/">Fábio dos Reis</a></span>  [autor do post] em <a href="http://www.bosontreinamentos.com.br/category/programacao-em-python/" rel="category tag">Programação em Python</a> [categoria do post]</p>
+	</header>
+		<div class="entry clearfix">
+		<section class="share-buttons-container clearfix">
+<div class="share-button"><div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
+<div class="share-button"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></div>
+<div class="share-button"><div class="g-plusone" data-size="medium"></div></div>
+</section>
+		<ul id="sharebar" style="background:#;border-color:#71b52d;">
+<li><div id="fb-root"></div><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-width="60" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div></li><li><a class="twitter-share-button" href="https://twitter.com/share" data-count="vertical">Tweet</a><script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script></li><li><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
+		<!-- Please call pinit.js only once per page -->
+		<script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script></li><li><a href="mailto:?subject=http://www.bosontreinamentos.com.br/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/" class="sharebar-button email">Email</a></li></ul><ul id="sharebarx">
+<li><div id="fb-root"></div><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-width="80" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div></li><li><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a><script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script></li><li><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a>
+		<!-- Please call pinit.js only once per page -->
+		<script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script></li><li><a href="mailto:?subject=http://www.bosontreinamentos.com.br/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/" class="sharebar-button email">Email</a></li></ul><h2>Leitura e gravação em arquivos com Python</h2>
+<p>Uma das tarefas mais importantes que realizamos no dia-a-dia é a manipulação de dados gravados em arquivos, dos mais variados tipos. Por exemplo, um administrador de sistemas precisa, com frequência, acessar informações de configuração armazenadas em arquivos de texto, e muitas vezes, efetuar alterações nesses arquivos.</p>
+<div class="content-ad"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Barra-Lateral -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-9235817663884647"
+     data-ad-slot="5827129612"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<p>Nesta lição vamos estudar os métodos para leitura e gravação de dados em arquivos utilizando Python. Os arquivos são muito importantes, pois permitem que os dados se tornem persistentes, podendo ser recuperados e utilizados sempre que for necessário, independentemente do programa ou script.</p>
+<h3><strong>Tipos de arquivos: texto simples e binário</strong></h3>
+<p><span style="font-weight: 400;">Um <strong>arquivo</strong> é uma área no disco onde gravamos e de onde lemos dados. Um arquivo pode ser de texto simples ou um arquivo binário.</span></p>
+<p><span style="font-weight: 400;">Arquivos de texto (plaintext) são uma sequência estruturada de linhas, que contém cada uma uma sequência de caracteres, sem informações sobre formatação.</span></p>
+<p><span style="font-weight: 400;">Cada linha em um arquivo de texto é terminada com um caractere especial de fim de linha, EOL (End of Line). No geral, é o caractere newline (<strong>\n</strong>). Esse caractere finaliza a linha atual e diz ao interpretador que uma nova linha se inicia.</span></p>
+<p><span style="font-weight: 400;">Já um arquivo binário é qualquer arquivo que não seja arquivo de texto padrão. Os arquivos binários somente devem ser processados por uma aplicação que compreenda a estrutura do arquivo. Como exemplos, temos arquivos pdf, doc, imagens, executáveis, mp3 e planilhas.</span></p>
+<h3>Trabalhando com arquivos em Python</h3>
+<p><span style="font-weight: 400;">Para trabalharmos com arquivos no Python usaremos o objeto </span><b><i>file</i></b><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">Os objetos file contém métodos e atributos que podem ser usados para coletar informações e manipular um arquivo.</span></p>
+<p><span style="font-weight: 400;">Um objeto file possui um atributo </span><b><i>nome</i></b><span style="font-weight: 400;">, que é o nome do arquivo a ser manipulado, e um atributo </span><b><i>modo</i></b><span style="font-weight: 400;">, que é o modo como o arquivo será acessado.</span></p>
+<h3>Modos de acesso a arquivos</h3>
+<p>Os modos de acesso a um arquivo disponíveis em Python estão listados na tabela a seguir:</p>
+<table style="height: 25px; width: 639px;">
+<tbody>
+<tr style="height: 24px;">
+<td style="width: 83px; text-align: center; height: 24px;"><strong>Modo</strong></td>
+<td style="width: 542px; text-align: center; height: 24px;"><strong>Tipo de acesso</strong></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 83px; text-align: center; height: 24px;">r</td>
+<td style="width: 542px; text-align: center; height: 24px;">Somente leitura</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 83px; text-align: center; height: 24px;">w</td>
+<td style="width: 542px; text-align: center; height: 24px;"><span style="font-weight: 400;">Escrita, apagando (truncando) o conteúdo existente no arquivo</span></td>
+</tr>
+<tr style="height: 48px;">
+<td style="width: 83px; text-align: center; height: 48px;">a</td>
+<td style="width: 542px; text-align: center; height: 48px;"><span style="font-weight: 400;">Escrita, preservando o conteúdo existente (append). O arquivo é criado, se não existir. O texto é inserido no final do arquivo.</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 83px; text-align: center; height: 24px;">b</td>
+<td style="width: 542px; text-align: center; height: 24px;"><span style="font-weight: 400;">Modo binário</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 83px; text-align: center; height: 24px;">+</td>
+<td style="width: 542px; text-align: center; height: 24px;"><span style="font-weight: 400;">Abre o arquivo para atualização - leitura e escrita</span></td>
+</tr>
+<tr style="height: 27px;">
+<td style="width: 83px; text-align: center; height: 27px;">x</td>
+<td style="width: 542px; text-align: center; height: 27px;">
+<p><span style="font-weight: 400;">Abre o arquivo para criação exclusiva, falhando se o arquivo já existir.</span></p>
+</td>
+</tr>
+<tr style="height: 27px;">
+<td style="width: 83px; text-align: center; height: 27px;">t</td>
+<td style="width: 542px; text-align: center; height: 27px;">
+<p><span style="font-weight: 400;">Modo de texto (padrão)</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-weight: 400;">Podemos combinar os modos, por exemplo r+, w+, w+b. O modo padrão é r (leitura) de texto, caso não seja especificado.</span></p>
+<p><span style="font-weight: 400;">Para trabalhar com arquivos de texto precisamos efetuar as seguintes operações, em sequência:</span></p>
+<ul>
+	<li><span style="font-weight: 400;">Abrir o arquivo no modo desejado</span></li>
+	<li><span style="font-weight: 400;">Chamar o método apropriado (leitura/escrita)</span></li>
+	<li>Executar o processamento dos dados do arquivo</li>
+	<li><span style="font-weight: 400;">Fechar o arquivo.</span></li>
+</ul>
+<h3>Abrindo arquivos para leitura</h3>
+<p><span style="font-weight: 400;">A função <strong>open()</strong> retorna um objeto </span><b><i>manipulador de arquivos</i></b><span style="font-weight: 400;">, que é um objeto iterável usado para realizar operações sobre um arquivo.</span></p>
+<p><span style="font-weight: 400;">Sintaxe:</span></p>
+<pre><span style="color: #800080;"><strong>manipulador = open(arquivo, modo)</strong></span></pre>
+<p><b>arquivo</b><span style="font-weight: 400;"> é uma string que indica o nome / caminho do arquivo a ser aberto no sistema de arquivos. Se o arquivo não estiver no mesmo diretório onde o script se encontra, devemos informar o caminho completo como parâmetro da função open().</span></p>
+<p><b>modo</b><span style="font-weight: 400;"> é opcional, sendo que o padrão é <strong>t</strong> (modo de texto).</span></p>
+<p><span style="font-weight: 400;">Não é necessário importar nenhum módulo para usar os manipuladores de arquivos.</span></p>
+<p>Quando um arquivo é lido, o Python mantém um registro da posição atual de leitura no arquivo. Se ele for lido com o método read(), a posição será sempre a do final do arquivo, pois esse método retorna o arquivo inteiro de uma vez. Caso a função read() seja chamada novamente, logo na sequência, uma string vazia será retornada, pois não há mais dados a serem lidos na posição atual no arquivo.</p>
+<p>Podemos alterar o ponteiro de arquivo por meio do método <strong>seek()</strong>, que recebe como argumento a posição desejada - um offset (deslocamento) em bytes.</p>
+<p>Para voltarmos ao início do arquivo, usamos a posição zero, como seek(0). Caso você queira ir até o oitavo byte, por exemplo, use seek(8). NO geral, o número do byte corresponde ao número do caractere no arquivo, exceto quando são usados caracteres que ocupam mais de um byte, como as codificações de idiomas asiáticos em UTF-8.</p>
+<p>Também podemos descobrir a posição atual dentro do arquivo com o método <strong>tell()</strong>.</p>
+<p>Veja os exemplos a seguir, nos quais utilizamos um arquivo de nome arq01.txt:</p>
+<pre><strong><span style="color: #ff0000;">arquivo = open('arq01.txt,'r')</span></strong>
+<strong><span style="color: #ff0000;">print('Posição atual no arquivo: ' + arquivo.tell())</span></strong>
+<strong><span style="color: #ff0000;"> print(arquivo.read())</span></strong>
+<strong><span style="color: #ff0000;">print('Posição atual no arquivo: ' + arquivo.tell())</span></strong>
+<strong><span style="color: #ff0000;"> print(arquivo.read())</span></strong>
+<strong><span style="color: #ff0000;">arquivo.seek(0)</span></strong>
+<strong><span style="color: #ff0000;"> print('Posição atual no arquivo: ' + arquivo.tell())</span></strong>
+<strong><span style="color: #ff0000;"> print(arquivo.read())</span></strong>
+<strong><span style="color: #ff0000;">arquivo.close()</span></strong></pre>
+<p>Podemos usar o método <strong>read()</strong> para ler um número determinado de caracteres, bastando para isso passar com argumento a quantidade de bytes a ser lida. Por exemplo, se quisermos ler os primeiros 8 bytes do arquivo:</p>
+<pre><span style="color: #ff0000;"><strong>arquivo.read(8)</strong></span></pre>
+<h3>Métodos readline() e readlines()</h3>
+<p>Além do método read(), visto anteriormente, também podemos ler o conteúdo de u arquivo usando os métodos <strong>readline()</strong> e <strong>readlines()</strong>.</p>
+<h4><strong>Método readline()</strong></h4>
+<p><span style="font-weight: 400;">Retorna uma linha do texto a cada chamada, na ordem em que aparecem no arquivo (um ponteiro de linha é incrementado a cada nova chamada ao método).</span></p>
+<h4><strong>Método readlines()</strong></h4>
+<p><span style="font-weight: 400;">Retorna uma lista de valores de string do arquivo, sendo que cada string corresponde a uma linha do texto.</span></p>
+<p><span style="font-weight: 400;">É mais fácil trabalhar com o método readlines() do que com o método read().</span></p>
+<p>O exemplo de código a seguir permite comparar os processos de leitura de um arquivo com os três métodos apresentados:</p>
+<pre><span style="color: #339966;"><strong><i># Testando os métodos read(), readline() e readlines()</i></strong></span>
+<span style="color: #ff0000;"><strong>manipulador = open('arquivo.txt','r')</strong></span>
+<span style="color: #ff0000;"><strong>print("\nMétodo read():\n")</strong></span>
+<span style="color: #ff0000;"><strong>print(manipulador.read())</strong></span>
+<span style="color: #ff0000;"><strong>
+manipulador.seek(0) <span style="color: #339966;"><i># Volta para o início do arquivo</i></span></strong></span>
+<span style="color: #ff0000;"><strong>
+print("\nMétodo readline():\n")</strong></span>
+<span style="color: #ff0000;"><strong>print(manipulador.readline())</strong></span>
+<span style="color: #ff0000;"><strong>print(manipulador.readline())
+</strong></span>
+<span style="color: #ff0000;"><strong>manipulador.seek(0)</strong></span>
+<span style="color: #ff0000;"><strong>print("\nMétodo readlines():\n")</strong></span>
+<span style="color: #ff0000;"><strong>print(manipulador.readlines())</strong></span>
+<span style="color: #ff0000;"><strong>manipulador.close()</strong></span></pre>
+<h3>Lendo um arquivo com laço for</h3>
+<p><span style="font-weight: 400;">Ao usar a iteração com laço for, não é necessário invocar os métodos read(), readline() ou readlines(). Veja o exemplo a seguir:</span></p>
+<pre><span style="color: #ff0000;"><strong>manipulador = open('arquivo.txt','r')</strong></span>
+<span style="color: #ff0000;"><strong>for linha in manipulador:</strong></span>
+<span style="color: #ff0000;"><strong>    print linha</strong></span>
+<span style="color: #ff0000;"><strong>manipulador.close()</strong></span></pre>
+<p>Esse script retorna a seguinte saída:</p>
+<p><img class="aligncenter wp-image-9743 size-full" title="Lendo arquivos com Python - 01" src="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/06/ler-arquivos-python-01.jpg" alt="Lendo arquivos com Python - 01" width="627" height="140" /></p>
+<p><span style="font-weight: 400;">Note que a função print() insere um caractere<strong> \n</strong> automaticamente ao final de cada linha, resultando em linhas em branco retornadas junto com o texto.</span></p>
+<p><span style="font-weight: 400;">Podemos eliminar essa linha em branco usando o método <strong>rstrip()</strong>, que elimina espaços no início de uma string, pois os caracteres \n são tratados com espaços:</span></p>
+<pre><span style="color: #ff0000;"><strong>manipulador = open('arquivo.txt','r')</strong></span>
+<span style="color: #ff0000;"><strong>for linha in manipulador:</strong></span>
+<span style="color: #ff0000;"><strong>    linha = linha.rstrip()</strong></span>
+<span style="color: #ff0000;"><strong>    print linha</strong></span>
+<span style="color: #ff0000;"><strong>manipulador.close()</strong></span></pre>
+<p>Resultado:</p>
+<p><img class="aligncenter wp-image-9744" title="Ler arquivos em Python usando método open e rstrip" src="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/06/ler-arquivos-python-02.jpg" alt="Ler arquivos em Python usando método open e rstrip" width="650" height="103" /></p>
+<h3>Fechando um arquivo</h3>
+<p>Uma boa prática é sempre fechar um arquivo após o término das operações sobre ele. Para fechar um arquivo, usamos o método close() no objeto, como em:</p>
+<pre><span style="color: #ff0000;"><strong>arquivo.close()</strong></span></pre>
+<p>Os objetos file possuem um atributo <strong>closed</strong> que retorna True se o arquivo estiver fechado, e retorna False se o arquivo ainda estiver aberto. Desta forma, é possível verificar se um arquivo foi realmente fechado ou não. Veja o exemplo a seguir:</p>
+<pre><span style="color: #ff0000;"><strong>arquivo = open('arq01.txt,'r')</strong></span>
+<span style="color: #ff0000;"><strong>conteudo_arquivo = arquivo.read()</strong></span>
+<span style="color: #ff0000;"><strong>print('Arquivo fechado?'.format(arquivo.closed))</strong></span>
+<span style="color: #ff0000;"><strong>if not arquivo.closed:</strong></span>
+<span style="color: #ff0000;"><strong>  arquivo.close()</strong></span>
+<span style="color: #ff0000;"><strong>print('Arquivo fechado? {}'.format(arquivo.closed))</strong></span></pre>
+<p>Também é possível fechar um arquivo automaticamente. Para isso, usamos a declaração <strong>with</strong>, como no exemplo a seguir:</p>
+<pre><span style="color: #ff0000;"><strong>with open('arq01.txt','r') as arquivo:</strong></span>
+<span style="color: #ff0000;"><strong> print("Arquivo fechado?".format(arquivo.closed))</strong></span>
+<span style="color: #ff0000;"><strong> print(arquivo.read())</strong></span>
+<span style="color: #ff0000;"><strong>print("Leitura do arquivo finalizada.")</strong></span>
+<span style="color: #ff0000;"><strong>print("Arquivo fechado?".format(arquivo.closed))</strong></span></pre>
+<p>Neste exemplo, o arquivo é aberto, lido, e após o término da leitura, é automaticamente fechado, não sendo necessária a invocação do método close().</p>
+<p>Na próxima lição vamos aprender a <a href="http://www.bosontreinamentos.com.br/programacao-em-python/como-gravar-dados-em-arquivos-de-texto-com-python/">escrever dados dentro do arquivo em Python</a>.</p>
+<p>&nbsp;</p>
+<h3> </h3>			</div>
+			<div class="post-tags clearfix">
+        	<ul><li><a href="http://www.bosontreinamentos.com.br/tag/programacao/" rel="tag">Programação</a></li><li><a href="http://www.bosontreinamentos.com.br/tag/python/" rel="tag">Python</a></li></ul>        </div>
+		</article><section class="share-buttons-container clearfix">
+<div class="share-button"><div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
+<div class="share-button"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></div>
+<div class="share-button"><div class="g-plusone" data-size="medium"></div></div>
+</section>
+<section class="author-box">
+<div class="author-box-wrap clearfix">
+<div class="author-box-avatar"><img alt='' src='http://1.gravatar.com/avatar/7a4b53048eea74fd49a8a30c8be08fe6?s=113&#038;d=retro&#038;r=g' srcset='http://1.gravatar.com/avatar/7a4b53048eea74fd49a8a30c8be08fe6?s=226&#038;d=retro&#038;r=g 2x' class='avatar avatar-113 photo' height='113' width='113' /></div>
+<h5 class="author-box-name">Sobre Fábio dos Reis<span class="author-box-postcount"> (<a href="http://www.bosontreinamentos.com.br/author/admin/" title="Mais artigos escritos por Fábio dos Reis">1224 Artigos</a>)</span></h5>
+<div class="author-box-desc">Fábio dos Reis trabalha com tecnologias variadas há mais de 25 anos, tendo atuado nos campos de Eletrônica, Telecomunicações, Programação de Computadores e Redes de Dados. É um entusiasta de Unix, Linux e Open Source em geral, adora Eletrônica e Astronomia, e estuda idiomas, além de ministrar cursos e palestras sobre diversas tecnologias em São Paulo e outras cidades do Brasil.</div>
+</div>
+<div class="author-box-contact"><span class="author-box-contact-start">Contato: </span><a class="author-box-website" href="http://www.bosontreinamentos.com.br" title="Visite o website de Fábio dos Reis" target="_blank">Website</a></div>
+</section>
+<nav class="section-title clearfix" role="navigation">
+<div class="post-nav left">
+<a href="http://www.bosontreinamentos.com.br/eletronica/curso-de-eletronica/curso-de-eletronica-o-que-e-pwm-pulse-width-modulation/" rel="prev">&larr; Artigo anterior</a></div>
+<div class="post-nav right">
+<a href="http://www.bosontreinamentos.com.br/programacao-em-python/como-gravar-dados-em-arquivos-de-texto-com-python/" rel="next">Próximo artigo &rarr;</a></div>
+</nav>
+<section class="related-posts">
+<h3 class="section-title">Artigos Relacionados</h3>
+<ul>
+<li class="related-wrap clearfix">
+<div class="related-thumb">
+<a href="http://www.bosontreinamentos.com.br/shell-script/shell-scripting-aliases-e-funcoes-no-bash-04/" title="Shell Scripting &#8211; Aliases e Funções no Bash &#8211; 04"><img src="http://www.bosontreinamentos.com.br/wp-content/themes/mh_magazine/images/noimage_cp_small.png" alt="No Picture" /></a>
+</div>
+<div class="related-data">
+<a href="http://www.bosontreinamentos.com.br/shell-script/shell-scripting-aliases-e-funcoes-no-bash-04/"><h4 class="related-title">Shell Scripting &#8211; Aliases e Funções no Bash &#8211; 04</h4></a>
+<span class="related-subheading"></span>
+</div>
+</li>
+<li class="related-wrap clearfix">
+<div class="related-thumb">
+<a href="http://www.bosontreinamentos.com.br/shell-script/shell-scripting-ler-dados-do-teclado-parametros-de-linha-de-comando-23/" title="Shell Scripting &#8211; Ler dados do teclado &#8211; Parâmetros de Linha de Comando &#8211; 23"><img src="http://www.bosontreinamentos.com.br/wp-content/themes/mh_magazine/images/noimage_cp_small.png" alt="No Picture" /></a>
+</div>
+<div class="related-data">
+<a href="http://www.bosontreinamentos.com.br/shell-script/shell-scripting-ler-dados-do-teclado-parametros-de-linha-de-comando-23/"><h4 class="related-title">Shell Scripting &#8211; Ler dados do teclado &#8211; Parâmetros de Linha de Comando &#8211; 23</h4></a>
+<span class="related-subheading"></span>
+</div>
+</li>
+<li class="related-wrap clearfix">
+<div class="related-thumb">
+<a href="http://www.bosontreinamentos.com.br/logica-de-programacao/20-logica-de-programacao-transferir-valores-de-variaveis/" title="20 &#8211; Lógica de Programação &#8211; Transferir Valores de Variáveis"><img width="174" height="131" src="http://www.bosontreinamentos.com.br/wp-content/uploads/2013/06/miniatura_lógica20-174x131.png" class="attachment-cp_small size-cp_small wp-post-image" alt="Lógica de Programação - Transferir Valores de Variáveis" srcset="http://www.bosontreinamentos.com.br/wp-content/uploads/2013/06/miniatura_lógica20-174x131.png 174w, http://www.bosontreinamentos.com.br/wp-content/uploads/2013/06/miniatura_lógica20-300x225.png 300w" sizes="(max-width: 174px) 100vw, 174px" /></a>
+</div>
+<div class="related-data">
+<a href="http://www.bosontreinamentos.com.br/logica-de-programacao/20-logica-de-programacao-transferir-valores-de-variaveis/"><h4 class="related-title">20 &#8211; Lógica de Programação &#8211; Transferir Valores de Variáveis</h4></a>
+<span class="related-subheading"></span>
+</div>
+</li>
+<li class="related-wrap clearfix">
+<div class="related-thumb">
+<a href="http://www.bosontreinamentos.com.br/mysql/mysql-estruturas-de-repeticao-comando-repeat-41/" title="MySQL &#8211; Estruturas de Repetição &#8211; comando REPEAT"><img width="174" height="131" src="http://www.bosontreinamentos.com.br/wp-content/uploads/2014/02/mysql-repetição-REPEAT-174x131.png" class="attachment-cp_small size-cp_small wp-post-image" alt="MySQL - Estruturas de Repetição - Comando REPEAT" srcset="http://www.bosontreinamentos.com.br/wp-content/uploads/2014/02/mysql-repetição-REPEAT-174x131.png 174w, http://www.bosontreinamentos.com.br/wp-content/uploads/2014/02/mysql-repetição-REPEAT-300x225.png 300w" sizes="(max-width: 174px) 100vw, 174px" /></a>
+</div>
+<div class="related-data">
+<a href="http://www.bosontreinamentos.com.br/mysql/mysql-estruturas-de-repeticao-comando-repeat-41/"><h4 class="related-title">MySQL &#8211; Estruturas de Repetição &#8211; comando REPEAT</h4></a>
+<span class="related-subheading"></span>
+</div>
+</li>
+<li class="related-wrap clearfix">
+<div class="related-thumb">
+<a href="http://www.bosontreinamentos.com.br/programacao-em-linguagem-c/ordenacao-de-arrays-em-c-com-o-metodo-bubblesort/" title="Ordenação de Arrays em C com o método Bubblesort"><img width="174" height="131" src="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/04/ordenação-vetor-bubblesort-algoritmo-C-174x131.jpg" class="attachment-cp_small size-cp_small wp-post-image" alt="Ordenando vetores em C com algoritmo de bolhas" srcset="http://www.bosontreinamentos.com.br/wp-content/uploads/2017/04/ordenação-vetor-bubblesort-algoritmo-C-174x131.jpg 174w, http://www.bosontreinamentos.com.br/wp-content/uploads/2017/04/ordenação-vetor-bubblesort-algoritmo-C-300x225.jpg 300w" sizes="(max-width: 174px) 100vw, 174px" /></a>
+</div>
+<div class="related-data">
+<a href="http://www.bosontreinamentos.com.br/programacao-em-linguagem-c/ordenacao-de-arrays-em-c-com-o-metodo-bubblesort/"><h4 class="related-title">Ordenação de Arrays em C com o método Bubblesort</h4></a>
+<span class="related-subheading"></span>
+</div>
+</li>
+</ul>
+</section>
+		<h4 class="section-title">1 Trackbacks & Pingbacks</h4>
+		<ol class="pinglist">
+        			<li class="pings"><a href='http://www.bosontreinamentos.com.br/programacao-em-python/como-gravar-dados-em-arquivos-de-texto-com-python/' rel='external nofollow' class='url'>Como gravar dados em arquivos de texto com Python - Bóson Treinamentos em Tecnologia</a></li>
+                </ol>	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Escreva um comentário <small><a rel="nofollow" id="cancel-comment-reply-link" href="/programacao-em-python/leitura-e-gravacao-em-arquivos-com-python/#respond" style="display:none;">Cancelar resposta</a></small></h3>			<form action="http://www.bosontreinamentos.com.br/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Seu e-mail não será divulgado</p><p class="comment-form-comment"><label for="comment">Comentário</label><br/><textarea id="comment" name="comment" cols="45" rows="5" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Nome</label><span class="required">*</span><br/><input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email</label><span class="required">*</span><br/><input id="email" name="email" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label><br/><input id="url" name="url" type="text" value="" size="30" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Publicar comentário" /> <input type='hidden' name='comment_post_ID' value='9741' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="bbfb3810f5" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="212"/></p>			</form>
+			</div><!-- #respond -->
+			</div>
+			<aside class="mh-sidebar sb-right">
+		<div class="sb-widget"><h4 class="widget-title">Pesquisar no Site</h4><form role="search" method="get" id="searchform" action="http://www.bosontreinamentos.com.br/">
+    <fieldset>
+		<input type="text" value="Para pesquisar, digite o que deseja e tecle Enter" onfocus="if (this.value == 'Para pesquisar, digite o que deseja e tecle Enter') this.value = ''" name="s" id="s" />
+		<input type="submit" id="searchsubmit" value="" />
+    </fieldset>
+</form></div><div class="sb-widget">			<div class="textwidget"><p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><br />
+<!-- bosonentrenamientos_sidebarbright_AdSense1_300x250_as --><br />
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-9235817663884647"
+     data-ad-slot="1541036055"></ins><br />
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</div><div class="sb-widget"><h4 class="widget-title">Assine nossa Newsletter</h4><!-- MailChimp for WordPress v2.3.17 - https://wordpress.org/plugins/mailchimp-for-wp/ --><div id="mc4wp-form-1" class="form mc4wp-form"><form method="post" ><p>
+	<label>Email address: </label>
+	<input type="email" id="mc4wp_email" name="EMAIL" placeholder="Your email address" required />
+</p>
+
+<p>
+	<input type="submit" value="Sign up" />
+</p><div style="display: none;"><input type="text" name="_mc4wp_ho_95544f236f33574ed2a7296d614f67c4" value="" tabindex="-1" autocomplete="off" /></div><input type="hidden" name="_mc4wp_timestamp" value="1525793616" /><input type="hidden" name="_mc4wp_form_id" value="0" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><input type="hidden" name="_mc4wp_form_submit" value="1" /><input type="hidden" name="_mc4wp_form_nonce" value="8291844e82" /></form></div><!-- / MailChimp for WordPress Plugin --></div><div class="sb-widget">			<div class="textwidget"><p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><br />
+<!-- bosonentrenamientos_sidebarbright_AdSense3_300x600_as --><br />
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-9235817663884647"
+     data-ad-slot="6115292612"></ins><br />
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</div>		<div class="sb-widget">		<h4 class="widget-title">Posts mais recentes</h4>		<ul>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/curso-de-eletronica/o-que-e-uma-matriz-de-contatos-curso-de-eletronica-basica/">O que é uma Matriz de Contatos &#8211; Curso de Eletrônica Básica</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/acionando-um-alarme-com-buzzer-e-led-usando-sensor-hc-sr04-e-arduino/">Acionando um alarme com buzzer e LED usando sensor HC-SR04 e Arduino</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/linux/10-exemplos-de-configuracao-de-rede-com-comandos-ip-no-linux/">20 exemplos de configuração de rede com comandos ip no Linux</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/redes-computadores/o-que-e-um-endereco-ip/">O que é um Endereço IP</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/linux/apresentacao-e-instalacao-do-linux-antergos/">Apresentação e Instalação do Linux Antergos</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/a-classe-ethernetserver-usando-o-arduino-como-um-servidor-de-rede/">A classe EthernetServer &#8211; Configurando um servidor web com Arduino</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/php-programming/curso-de-php-consulta-com-pesquisa-de-dados-em-banco-mysql/">Curso de PHP &#8211; Como fazer consulta com pesquisa de dados em banco MySQL</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/redes-computadores/o-que-e-um-endereco-ip-privado/">O que é um Endereço IP Privado</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/php-programming/trabalhando-com-sessoes-em-php-e-variavel-_session/">Trabalhando com sessões em PHP e variável $_SESSION</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/carreira/18-dicas-para-aprendizado-de-programacao-de-computadores/">18 Dicas para aprendizado de Programação de Computadores</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/php-programming/ordenacao-de-arrays-em-php/">Ordenação de Arrays em PHP</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/mysql/criando-e-usando-colunas-geradas-campos-calculados-em-tabelas-no-mysql/">Criando e usando Colunas Geradas &#8211; Campos Calculados em Tabelas no MySQL</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/php-programming/constantes-em-php/">Constantes em PHP</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/usando-um-sensor-ultrassonico-hc-sr04-com-arduino/">Usando um Sensor Ultrassônico de Distância HC-SR04 com Arduino</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/mysql/opcoes-de-chave-estrangeira-mysql/">ON DELETE CASCADE e Opções de Chave Estrangeira no MySQL</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/">Constraints no PostgreSQL (Restrições)</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/sistemas-embarcados/o-que-sao-sensores/">O que são Sensores</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/carreira/quais-linguagens-de-programacao-devo-estudar-neste-ano-de-2018/">Quais linguagens de programação devo estudar neste ano de 2018?</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/como-usar-um-shield-ethernet-no-arduino/">Como usar um Shield Ethernet no Arduino</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/mac-os-x/como-converter-uma-conta-de-usuario-comum-para-administrador-via-terminal-do-mac-os-x/">Como converter uma conta de usuário comum para administrador via terminal do Mac OS X</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/programacao-em-linguagem-c/cabecalhos-padrao-standard-headers-em-linguagem-c/">Cabeçalhos Padrão &#8211; Standard Headers em Linguagem C</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/linux/variavel-de-ambiente-ps1-configurando-o-prompt-no-terminal-do-linux/">A Variável de Ambiente PS1 &#8211; Configurando o prompt no terminal do Linux</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/windows-server-2012/como-desabilitar-os-requisitos-de-complexidade-de-senhas-no-windows-server-2012/">Como desabilitar Requisitos de Complexidade de Senhas no Windows Server 2012</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/programacao-em-r/declaracao-e-atribuicao-de-variaveis-em-r/">Declaração e Atribuição de Variáveis em R</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/especificacoes-dos-capacitores-tensao-de-operacao/">Especificações dos Capacitores: Tensão de Operação Máxima</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/eletronica-digital/introducao-aos-flip-flops-e-logica-sequencial/">Introdução aos Flip-flops e Lógica Sequencial</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/eletronica-digital/o-flip-flop-sr-latch/">O Latch SR (Flip-flop SR) com portas NAND</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/noticias/robos-e-automacao-podem-eliminar-ate-20-de-todos-os-empregos-ate-2030/">Robôs e automação podem eliminar até 20% de todos os empregos até 2030</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/estruturas-de-dados/estruturas-de-dados-o-registro/">Estruturas de Dados: o Registro</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/mac-os-x/falha-de-seguranca-no-mac-os-x-high-sierra-permite-login-como-root-sem-usar-senha/">Falha de segurança no Mac OS X High Sierra permite login como root sem usar senha</a>
+									</li>
+					</ul>
+		</div><div class="sb-widget"><h4 class="widget-title">Tags</h4><div class="tagcloud"><a href="http://www.bosontreinamentos.com.br/tag/android/" class="tag-cloud-link tag-link-126 tag-link-position-1" style="font-size: 10.545454545455pt;" aria-label="Android (13 itens)">Android</a>
+<a href="http://www.bosontreinamentos.com.br/tag/apple/" class="tag-cloud-link tag-link-143 tag-link-position-2" style="font-size: 11.818181818182pt;" aria-label="Apple (19 itens)">Apple</a>
+<a href="http://www.bosontreinamentos.com.br/tag/arduino/" class="tag-cloud-link tag-link-190 tag-link-position-3" style="font-size: 14.70303030303pt;" aria-label="Arduino (43 itens)">Arduino</a>
+<a href="http://www.bosontreinamentos.com.br/tag/astronomia/" class="tag-cloud-link tag-link-124 tag-link-position-4" style="font-size: 9.2727272727273pt;" aria-label="Astronomia (9 itens)">Astronomia</a>
+<a href="http://www.bosontreinamentos.com.br/tag/bancos-de-dados/" class="tag-cloud-link tag-link-186 tag-link-position-5" style="font-size: 16.739393939394pt;" aria-label="Bancos de Dados (75 itens)">Bancos de Dados</a>
+<a href="http://www.bosontreinamentos.com.br/tag/c/" class="tag-cloud-link tag-link-70 tag-link-position-6" style="font-size: 14.957575757576pt;" aria-label="C# (46 itens)">C#</a>
+<a href="http://www.bosontreinamentos.com.br/tag/ccna/" class="tag-cloud-link tag-link-64 tag-link-position-7" style="font-size: 11.478787878788pt;" aria-label="CCNA (17 itens)">CCNA</a>
+<a href="http://www.bosontreinamentos.com.br/tag/criptografia/" class="tag-cloud-link tag-link-187 tag-link-position-8" style="font-size: 11.987878787879pt;" aria-label="Criptografia (20 itens)">Criptografia</a>
+<a href="http://www.bosontreinamentos.com.br/tag/eletronica/" class="tag-cloud-link tag-link-78 tag-link-position-9" style="font-size: 17.078787878788pt;" aria-label="Eletrônica (83 itens)">Eletrônica</a>
+<a href="http://www.bosontreinamentos.com.br/tag/eletronica-digital/" class="tag-cloud-link tag-link-170 tag-link-position-10" style="font-size: 13.175757575758pt;" aria-label="Eletrônica Digital (28 itens)">Eletrônica Digital</a>
+<a href="http://www.bosontreinamentos.com.br/tag/ferramentas/" class="tag-cloud-link tag-link-40 tag-link-position-11" style="font-size: 10.545454545455pt;" aria-label="Ferramentas (13 itens)">Ferramentas</a>
+<a href="http://www.bosontreinamentos.com.br/tag/fisica/" class="tag-cloud-link tag-link-140 tag-link-position-12" style="font-size: 8.4242424242424pt;" aria-label="Física (7 itens)">Física</a>
+<a href="http://www.bosontreinamentos.com.br/tag/google/" class="tag-cloud-link tag-link-107 tag-link-position-13" style="font-size: 10.206060606061pt;" aria-label="Google (12 itens)">Google</a>
+<a href="http://www.bosontreinamentos.com.br/tag/hardware/" class="tag-cloud-link tag-link-184 tag-link-position-14" style="font-size: 12.751515151515pt;" aria-label="Hardware (25 itens)">Hardware</a>
+<a href="http://www.bosontreinamentos.com.br/tag/iot/" class="tag-cloud-link tag-link-96 tag-link-position-15" style="font-size: 11.224242424242pt;" aria-label="IoT (16 itens)">IoT</a>
+<a href="http://www.bosontreinamentos.com.br/tag/javascript/" class="tag-cloud-link tag-link-217 tag-link-position-16" style="font-size: 8.8484848484848pt;" aria-label="JavaScript (8 itens)">JavaScript</a>
+<a href="http://www.bosontreinamentos.com.br/tag/linguagem-c/" class="tag-cloud-link tag-link-226 tag-link-position-17" style="font-size: 9.9515151515152pt;" aria-label="Linguagem C (11 itens)">Linguagem C</a>
+<a href="http://www.bosontreinamentos.com.br/tag/linux/" class="tag-cloud-link tag-link-175 tag-link-position-18" style="font-size: 22pt;" aria-label="Linux (318 itens)">Linux</a>
+<a href="http://www.bosontreinamentos.com.br/tag/livros/" class="tag-cloud-link tag-link-77 tag-link-position-19" style="font-size: 9.6121212121212pt;" aria-label="Livros (10 itens)">Livros</a>
+<a href="http://www.bosontreinamentos.com.br/tag/lpic/" class="tag-cloud-link tag-link-55 tag-link-position-20" style="font-size: 17.927272727273pt;" aria-label="LPIC (104 itens)">LPIC</a>
+<a href="http://www.bosontreinamentos.com.br/tag/logica/" class="tag-cloud-link tag-link-42 tag-link-position-21" style="font-size: 12.157575757576pt;" aria-label="Lógica (21 itens)">Lógica</a>
+<a href="http://www.bosontreinamentos.com.br/tag/mac-os-x/" class="tag-cloud-link tag-link-145 tag-link-position-22" style="font-size: 10.8pt;" aria-label="Mac OS X (14 itens)">Mac OS X</a>
+<a href="http://www.bosontreinamentos.com.br/tag/matematica/" class="tag-cloud-link tag-link-195 tag-link-position-23" style="font-size: 9.9515151515152pt;" aria-label="Matemática (11 itens)">Matemática</a>
+<a href="http://www.bosontreinamentos.com.br/tag/mysql/" class="tag-cloud-link tag-link-188 tag-link-position-24" style="font-size: 15.551515151515pt;" aria-label="MySQL (54 itens)">MySQL</a>
+<a href="http://www.bosontreinamentos.com.br/tag/noticias/" class="tag-cloud-link tag-link-131 tag-link-position-25" style="font-size: 14.193939393939pt;" aria-label="Notícias (37 itens)">Notícias</a>
+<a href="http://www.bosontreinamentos.com.br/tag/oracle/" class="tag-cloud-link tag-link-212 tag-link-position-26" style="font-size: 8.4242424242424pt;" aria-label="Oracle (7 itens)">Oracle</a>
+<a href="http://www.bosontreinamentos.com.br/tag/os-x/" class="tag-cloud-link tag-link-94 tag-link-position-27" style="font-size: 9.6121212121212pt;" aria-label="OS X (10 itens)">OS X</a>
+<a href="http://www.bosontreinamentos.com.br/tag/php/" class="tag-cloud-link tag-link-127 tag-link-position-28" style="font-size: 13.684848484848pt;" aria-label="PHP (32 itens)">PHP</a>
+<a href="http://www.bosontreinamentos.com.br/tag/postgresql/" class="tag-cloud-link tag-link-193 tag-link-position-29" style="font-size: 9.6121212121212pt;" aria-label="PostgreSQL (10 itens)">PostgreSQL</a>
+<a href="http://www.bosontreinamentos.com.br/tag/powershell/" class="tag-cloud-link tag-link-73 tag-link-position-30" style="font-size: 10.969696969697pt;" aria-label="Powershell (15 itens)">Powershell</a>
+<a href="http://www.bosontreinamentos.com.br/tag/programacao/" class="tag-cloud-link tag-link-185 tag-link-position-31" style="font-size: 21.490909090909pt;" aria-label="Programação (275 itens)">Programação</a>
+<a href="http://www.bosontreinamentos.com.br/tag/protocolos/" class="tag-cloud-link tag-link-181 tag-link-position-32" style="font-size: 12.921212121212pt;" aria-label="Protocolos (26 itens)">Protocolos</a>
+<a href="http://www.bosontreinamentos.com.br/tag/python/" class="tag-cloud-link tag-link-152 tag-link-position-33" style="font-size: 9.6121212121212pt;" aria-label="Python (10 itens)">Python</a>
+<a href="http://www.bosontreinamentos.com.br/tag/redes/" class="tag-cloud-link tag-link-180 tag-link-position-34" style="font-size: 16.484848484848pt;" aria-label="Redes (70 itens)">Redes</a>
+<a href="http://www.bosontreinamentos.com.br/tag/seguranca/" class="tag-cloud-link tag-link-172 tag-link-position-35" style="font-size: 17.078787878788pt;" aria-label="Segurança (83 itens)">Segurança</a>
+<a href="http://www.bosontreinamentos.com.br/tag/shell-scripting/" class="tag-cloud-link tag-link-87 tag-link-position-36" style="font-size: 8.8484848484848pt;" aria-label="Shell Scripting (8 itens)">Shell Scripting</a>
+<a href="http://www.bosontreinamentos.com.br/tag/sql/" class="tag-cloud-link tag-link-176 tag-link-position-37" style="font-size: 17.50303030303pt;" aria-label="SQL (92 itens)">SQL</a>
+<a href="http://www.bosontreinamentos.com.br/tag/sql-server/" class="tag-cloud-link tag-link-224 tag-link-position-38" style="font-size: 9.6121212121212pt;" aria-label="SQL Server (10 itens)">SQL Server</a>
+<a href="http://www.bosontreinamentos.com.br/tag/ubuntu/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 15.721212121212pt;" aria-label="Ubuntu (57 itens)">Ubuntu</a>
+<a href="http://www.bosontreinamentos.com.br/tag/vb-net/" class="tag-cloud-link tag-link-30 tag-link-position-40" style="font-size: 12.751515151515pt;" aria-label="VB.NET (25 itens)">VB.NET</a>
+<a href="http://www.bosontreinamentos.com.br/tag/virtualizacao/" class="tag-cloud-link tag-link-178 tag-link-position-41" style="font-size: 10.545454545455pt;" aria-label="Virtualização (13 itens)">Virtualização</a>
+<a href="http://www.bosontreinamentos.com.br/tag/windows/" class="tag-cloud-link tag-link-62 tag-link-position-42" style="font-size: 10.8pt;" aria-label="Windows (14 itens)">Windows</a>
+<a href="http://www.bosontreinamentos.com.br/tag/windows-10/" class="tag-cloud-link tag-link-100 tag-link-position-43" style="font-size: 8.8484848484848pt;" aria-label="Windows 10 (8 itens)">Windows 10</a>
+<a href="http://www.bosontreinamentos.com.br/tag/windows-server/" class="tag-cloud-link tag-link-36 tag-link-position-44" style="font-size: 8pt;" aria-label="Windows Server (6 itens)">Windows Server</a>
+<a href="http://www.bosontreinamentos.com.br/tag/windows-server-2012/" class="tag-cloud-link tag-link-137 tag-link-position-45" style="font-size: 11.478787878788pt;" aria-label="Windows Server 2012 (17 itens)">Windows Server 2012</a></div>
+</div>	</aside>
+	</div>
+    </div>
+<footer class="row clearfix">
+			<div class="col-1-4 mq-footer">
+		<div class="footer-widget footer-2"><h6 class="footer-widget-title">Arquivos</h6>		<label class="screen-reader-text" for="archives-dropdown-3">Arquivos</label>
+		<select id="archives-dropdown-3" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+			
+			<option value="">Selecionar o mês</option>
+				<option value='http://www.bosontreinamentos.com.br/2018/04/'> Abril 2018 &nbsp;(7)</option>
+	<option value='http://www.bosontreinamentos.com.br/2018/03/'> Março 2018 &nbsp;(6)</option>
+	<option value='http://www.bosontreinamentos.com.br/2018/02/'> Fevereiro 2018 &nbsp;(4)</option>
+	<option value='http://www.bosontreinamentos.com.br/2018/01/'> Janeiro 2018 &nbsp;(7)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/12/'> dezembro 2017 &nbsp;(5)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/11/'> novembro 2017 &nbsp;(14)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/10/'> outubro 2017 &nbsp;(5)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/09/'> setembro 2017 &nbsp;(11)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/08/'> agosto 2017 &nbsp;(19)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/07/'> julho 2017 &nbsp;(17)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/06/'> junho 2017 &nbsp;(17)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/05/'> Maio 2017 &nbsp;(15)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/04/'> Abril 2017 &nbsp;(11)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/03/'> Março 2017 &nbsp;(8)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/02/'> Fevereiro 2017 &nbsp;(5)</option>
+	<option value='http://www.bosontreinamentos.com.br/2017/01/'> Janeiro 2017 &nbsp;(3)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/12/'> dezembro 2016 &nbsp;(7)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/11/'> novembro 2016 &nbsp;(15)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/10/'> outubro 2016 &nbsp;(10)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/09/'> setembro 2016 &nbsp;(17)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/08/'> agosto 2016 &nbsp;(10)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/07/'> julho 2016 &nbsp;(17)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/06/'> junho 2016 &nbsp;(22)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/05/'> Maio 2016 &nbsp;(8)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/04/'> Abril 2016 &nbsp;(19)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/03/'> Março 2016 &nbsp;(6)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/02/'> Fevereiro 2016 &nbsp;(17)</option>
+	<option value='http://www.bosontreinamentos.com.br/2016/01/'> Janeiro 2016 &nbsp;(20)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/12/'> dezembro 2015 &nbsp;(3)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/11/'> novembro 2015 &nbsp;(10)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/10/'> outubro 2015 &nbsp;(27)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/09/'> setembro 2015 &nbsp;(19)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/08/'> agosto 2015 &nbsp;(37)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/07/'> julho 2015 &nbsp;(107)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/06/'> junho 2015 &nbsp;(43)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/05/'> Maio 2015 &nbsp;(53)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/04/'> Abril 2015 &nbsp;(37)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/02/'> Fevereiro 2015 &nbsp;(2)</option>
+	<option value='http://www.bosontreinamentos.com.br/2015/01/'> Janeiro 2015 &nbsp;(6)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/12/'> dezembro 2014 &nbsp;(1)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/10/'> outubro 2014 &nbsp;(5)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/09/'> setembro 2014 &nbsp;(9)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/08/'> agosto 2014 &nbsp;(6)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/07/'> julho 2014 &nbsp;(5)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/06/'> junho 2014 &nbsp;(55)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/05/'> Maio 2014 &nbsp;(7)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/04/'> Abril 2014 &nbsp;(30)</option>
+	<option value='http://www.bosontreinamentos.com.br/2014/02/'> Fevereiro 2014 &nbsp;(71)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/12/'> dezembro 2013 &nbsp;(2)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/11/'> novembro 2013 &nbsp;(32)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/10/'> outubro 2013 &nbsp;(35)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/09/'> setembro 2013 &nbsp;(50)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/08/'> agosto 2013 &nbsp;(28)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/06/'> junho 2013 &nbsp;(227)</option>
+	<option value='http://www.bosontreinamentos.com.br/2013/03/'> Março 2013 &nbsp;(1)</option>
+
+		</select>
+		</div>	</div>
+			<div class="col-1-4 mq-footer">
+				<div class="footer-widget footer-3">		<h6 class="footer-widget-title">Artigos Recentes</h6>		<ul>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/curso-de-eletronica/o-que-e-uma-matriz-de-contatos-curso-de-eletronica-basica/">O que é uma Matriz de Contatos &#8211; Curso de Eletrônica Básica</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/acionando-um-alarme-com-buzzer-e-led-usando-sensor-hc-sr04-e-arduino/">Acionando um alarme com buzzer e LED usando sensor HC-SR04 e Arduino</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/linux/10-exemplos-de-configuracao-de-rede-com-comandos-ip-no-linux/">20 exemplos de configuração de rede com comandos ip no Linux</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/redes-computadores/o-que-e-um-endereco-ip/">O que é um Endereço IP</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/linux/apresentacao-e-instalacao-do-linux-antergos/">Apresentação e Instalação do Linux Antergos</a>
+									</li>
+											<li>
+					<a href="http://www.bosontreinamentos.com.br/eletronica/arduino/a-classe-ethernetserver-usando-o-arduino-como-um-servidor-de-rede/">A classe EthernetServer &#8211; Configurando um servidor web com Arduino</a>
+									</li>
+					</ul>
+		</div>	</div>
+			<div class="col-1-4 mq-footer">
+		<div class="footer-widget footer-4"><h6 class="footer-widget-title">Buscar no Site</h6><form role="search" method="get" id="searchform" action="http://www.bosontreinamentos.com.br/">
+    <fieldset>
+		<input type="text" value="Para pesquisar, digite o que deseja e tecle Enter" onfocus="if (this.value == 'Para pesquisar, digite o que deseja e tecle Enter') this.value = ''" name="s" id="s" />
+		<input type="submit" id="searchsubmit" value="" />
+    </fieldset>
+</form></div>	</div>
+	</footer>
+<div class="copyright-wrap">
+	<p class="copyright">Copyright &copy; 2018 | MH Magazine WordPress Theme by <a href="http://www.mhthemes.com/" title="Premium WordPress Themes" rel="nofollow">MH Themes</a></p>
+</div>
+</div>
+<!-- ngg_resource_manager_marker --><script type='text/javascript'>
+/* <![CDATA[ */
+
+var nextgen_lightbox_settings = {"static_path":"http:\/\/www.bosontreinamentos.com.br\/wp-content\/plugins\/nextgen-gallery\/products\/photocrati_nextgen\/modules\/lightbox\/static","context":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/nextgen_gallery_display/static/common.min.js?ver=2.1.26'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/lightbox/static/lightbox_context.min.js'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-includes/js/comment-reply.min.js?ver=4.9.5'></script>
+<script type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-includes/js/wp-embed.min.js?ver=4.9.5'></script>
+<script async="async" type='text/javascript' src='http://www.bosontreinamentos.com.br/wp-content/plugins/akismet/_inc/form.js?ver=4.0.3'></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+			<div id="fb-root"></div>
+			<script>
+				(function(d, s, id){
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+			</script> <script type="text/javascript">(function() {
+	function addSubmittedClassToFormContainer(e) {
+		var form = e.target.form.parentNode;
+		var className = 'mc4wp-form-submitted';
+		(form.classList) ? form.classList.add(className) : form.className += ' ' + className;
+	}
+
+	function maybePrefixUrlField() {
+		if(this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
+			this.value = "http://" + this.value;
+		}
+	}
+
+	var forms = document.querySelectorAll('.mc4wp-form');
+	for (var i = 0; i < forms.length; i++) {
+		(function(f) {
+
+			/* add class on submit */
+			var b = f.querySelector('[type="submit"], [type="image"]');
+			if( b ) {
+				if(b.addEventListener) {
+					b.addEventListener('click', addSubmittedClassToFormContainer);
+				} else {
+					b.attachEvent('click', addSubmittedClassToFormContainer);
+				}
+			}
+
+			/* better URL fields */
+			var urlFields = f.querySelectorAll('input[type="url"]');
+			if( urlFields && urlFields.length > 0 ) {
+				for( var j=0; j < urlFields.length; j++ ) {
+					if(urlFields[j].addEventListener) {
+						urlFields[j].addEventListener('blur', maybePrefixUrlField);
+					} else {
+						urlFields[j].attachEvent( 'blur', maybePrefixUrlField);
+					}
+				}
+			}
+
+		})(forms[i]);
+	}
+})();
+
+</script></body>
+</html>

@@ -1,0 +1,87 @@
+Leitura e gravação em arquivos com python
+
+" Arquivos de texto (plaintext) são uma sequência estruturada de linhas, que contém cada uma uma sequência de caracteres, sem informações sobre formatação."
+- Cada linha em um arquivo de texto é terminada com um caractere especial de fim de linha, EOL (End of Line). No geral, é o caractere newline (\n). Esse caractere
+finaliza a linha atual e diz ao interpretador que uma nova linha se inicia.
+- Já um arquivo binário é qualquer arquivo que não seja arquivo de texto padrão. Os arquivos binários somente devem ser processados por uma aplicação que compreenda
+a estrutura do arquivo. Como exemplos, temos arquivos pdf, doc, imagens, executáveis, mp3 e planilhas.
+- Para trabalharmos com arquivos no Python usaremos o objeto file.
+- Os objetos file contém métodos e atributos que podem ser usados para coletar informações e manipular um arquivo.
+- Um objeto file possui um atributo nome, que é o nome do arquivo a ser manipulado, e um atributo modo, que é o modo como o arquivo será acessado.
+
+Os modos de acesso a um arquivo disponíveis em Python estão listados na tabela a seguir:
+Modo	Tipo de acesso
+r	Somente leitura
+w	Escrita, apagando (truncando) o conteúdo existente no arquivo
+a	Escrita, preservando o conteúdo existente (append). O arquivo é criado, se não existir. O texto é inserido no final do arquivo.
+b	Modo binário
++	Abre o arquivo para atualização - leitura e escrita
+x	Abre o arquivo para criação exclusiva, falhando se o arquivo já existir.
+t	Modo de texto (padrão)
+
+- Podemos combinar os modos, por exemplo r+, w+, w+b. O modo padrão é r (leitura) de texto, caso não seja especificado.
+- Para trabalhar com arquivos de texto precisamos efetuar as seguintes operações, em sequência:
+
+Abrir o arquivo no modo desejado
+Chamar o método apropriado (leitura/escrita)
+Executar o processamento dos dados do arquivo
+Fechar o arquivo.
+
+- A função open() retorna um objeto manipulador de arquivos, que é um objeto iterável usado para realizar operações sobre um arquivo.
+
+Sintaxe:
+
+manipulador = open(arquivo, modo)
+
+arquivo é uma string que indica o nome / caminho do arquivo a ser aberto no sistema de arquivos. Se o arquivo não estiver no mesmo
+diretório onde o script se encontra, devemos informar o caminho completo como parâmetro da função open().
+
+modo é opcional, sendo que o padrão é t (modo de texto).
+Não é necessário importar nenhum módulo para usar os manipuladores de arquivos.
+
+Veja os exemplos a seguir, nos quais utilizamos um arquivo de nome arq01.txt:
+Também podemos descobrir a posição atual dentro do arquivo com o método tell().
+
+arquivo = open('arq01.txt,'r')
+print('Posição atual no arquivo: ' + arquivo.tell())
+ print(arquivo.read())
+print('Posição atual no arquivo: ' + arquivo.tell())
+ print(arquivo.read())
+arquivo.seek(0)
+ print('Posição atual no arquivo: ' + arquivo.tell())
+ print(arquivo.read())
+arquivo.close()
+
+Podemos usar o método read() para ler um número determinado de caracteres, bastando para isso passar com argumento a quantidade de bytes a ser lida.
+Por exemplo, se quisermos ler os primeiros 8 bytes do arquivo:
+arquivo.read(8)
+
+Métodos readline() e readlines()
+Além do método read(), visto anteriormente, também podemos ler o conteúdo de u arquivo usando os métodos readline() e readlines().
+
+Método readline()
+Retorna uma linha do texto a cada chamada, na ordem em que aparecem no arquivo (um ponteiro de linha é incrementado a cada nova chamada ao método).
+
+Método readlines()
+Retorna uma lista de valores de string do arquivo, sendo que cada string corresponde a uma linha do texto.
+
+É mais fácil trabalhar com o método readlines() do que com o método read().
+
+O exemplo de código a seguir permite comparar os processos de leitura de um arquivo com os três métodos apresentados:
+
+# Testando os métodos read(), readline() e readlines()
+manipulador = open('arquivo.txt','r')
+print("\nMétodo read():\n")
+print(manipulador.read())
+
+manipulador.seek(0) # Volta para o início do arquivo
+
+print("\nMétodo readline():\n")
+print(manipulador.readline())
+print(manipulador.readline())
+
+manipulador.seek(0)
+print("\nMétodo readlines():\n")
+print(manipulador.readlines())
+manipulador.close()
+

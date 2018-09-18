@@ -1,0 +1,91 @@
+Aula 9 - Manipulando Texto - Rascunhos
+
+O que é?
+'Curso em vídeo de Python' = Cadeia de caractéres ou String.
+Nessa aula vamos aprender a manipular uma cadeia de caractéres
+
+Exemplo:
+
+frase = 'Curso em vídeo de python'
+cada string é guardada na memória do computador e cada caractere recebe um número.
+exe: c(0) u(1) R(2) S(3) O(4) _(5) e(6) m(7) (...)
+
+--Tecnica de Fatiamento:
+Pegar 'pedaços' de uma string.
+
+exe: 
+frase = 'Curso em vídeo de python'
+print(frase[9])
+# o programa irá mostrar apenas a letra 'v', pois ela é o nono caractere na frase, 
+contando sempre com os espaços e o primeiro caractere 'recebendo' o indice '0'.
+
+ou
+print(frase[9:13])
+# O programa irá mostrar os índices do 9 ao 13. Obs: o programa não irá considerar(mostrar)
+o indice de número 13.
+
+ou
+print(9:21:2)
+# O programa irá mostrar do nove ao vinte e um pulando de um em um.
+
+ou
+print(frase[:5])
+# Irá mostrar a frase do inicio ao 5(sem mostrar o cinco)
+
+ou print(frase[5:])
+# Irá mostrar a frase do 5 até o fim.
+
+ou
+print(frase[9::3])
+# Irá mostrar do nove até o fim, pulando três em três caracteres.
+
+--Análise
+comando1: len(frase)
+len = Comprimento(no português)
+comando usado para medir o comprimento da frase considerando os espaços.
+
+
+comando2: frase.count('o')
+conta na tela quantas vezes o 'o' aparece.
+
+comando3: frase.count('o',0,13)
+# Fará o fatiamento contando quantas vezes o 'o' aparece.
+
+comando4: frase.find('deo')
+# vai encontrar a posição de 'deo'.
+
+comando5: frase.find('Android')
+# No caso a sting 'Android' não existe na string 'curso em vídeo de python', então o programa
+irá retornar o valor -1, que quer dizer que o mesmo não encontrou a string.
+
+comando6(operador): 'curso' in frase
+
+--Transformação
+
+comando1: frase.replace('python',android')
+# o programa irá substituir 'python' por 'android' na frase.
+
+comando2: frase.upper()
+# O programa irá colocar todas as letras minusculas en maiuscula.
+
+comando3: frase.lower()
+# O msm que upper, só que ao contrário.
+
+comando4: frase.capitalize()
+# Toda a frase fica minuscula, menos a primeira letra da frase.
+
+c5: frase.title()
+# Cada letra após um espaço irá ficar maiuscula.
+
+c6: frase.strip()
+# Remove todos os espaços inúteis no início e no fim da frase.
+
+c7: frase.rstrip()
+
+c8 frase.lstrip()
+
+c9: frase.split()
+
+c10 frase.count() >> conta quantas vezes uma letra/numero aparece na frase
+
+

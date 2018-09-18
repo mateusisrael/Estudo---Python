@@ -1,0 +1,8 @@
+nome=input('Para começar, digite seu nome: ')
+print('Legal!!! Já sabemos como te chamar'+', '+nome+'.')
+input('Vamos continuar. Por-favor aperte Enter. ')
+dia=input('Qual dia você nasceu? ')
+mes=input('Do mês de? ')
+ano=input('Do ano? ')
+print('Então você nasceu em:',dia,'de',mes,'de',ano+'?')
+input('Legal!!! Pressione Enter para finalizar.')
